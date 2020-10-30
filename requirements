@@ -1,0 +1,7 @@
+psycopg2==2.8.6
+asgiref==3.2.10
+dj-database-url==0.5.0
+Django==3.0.8
+django-environ==0.4.5
+pytz==2020.1
+sqlparse==0.3.1
