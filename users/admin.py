@@ -1,5 +1,5 @@
 from django.contrib import admin
-from users.models import User
+from users.models import User, UserCourse, Notification
 
 class UserAdmin(admin.ModelAdmin):
 
@@ -22,3 +22,6 @@ class UserAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(User, UserAdmin)
+
+admin.site.register(UserCourse)
+admin.site.register(Notification)

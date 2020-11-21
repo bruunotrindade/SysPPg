@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import *
 
-# Register your models here.
+admin.site.register(UndergraduateCourse)
+admin.site.register(PostGraduationProgram)
+admin.site.register(Modality)
+admin.site.register(Step)
