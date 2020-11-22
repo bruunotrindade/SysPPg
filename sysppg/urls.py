@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static, settings
+from django.contrib.auth.decorators import login_required
+from users.views import LoginView, LogoutView, RegisterView
+from .settings import MEDIA_ROOT, MEDIA_URL
+from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('', login_required(TemplateView.as_view(template_name="dashboard.html")), name="dashboard"),
     path('admin/', admin.site.urls),
-]
+    path('logout/', LogoutView.as_view(), name='logout'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('cadastro/', RegisterView.as_view(), name='register'),
+] + static(MEDIA_URL, document_root=MEDIA_ROOT)

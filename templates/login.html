@@ -1,0 +1,55 @@
+{% extends 'bases/base_light.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+	<div class="text-center">
+		<h1 class="h2 mb-5" style="font-size: 3rem">SysPPg</h1>
+		<p class="lead">
+			Acesse sua conta para continuar
+		</p>
+	</div>
+
+	<div class="card">
+		<div class="card-body">
+			<div class="m-sm-4">
+				{% if messages %}
+                    <div class="row align-items-center py-4">
+                        <div class="col">
+                            {% include 'components/messages.html' %}
+                        </div>
+                    </div>
+				{% endif %}
+				
+				<form method="post">
+					{% csrf_token %}
+					{% include 'components/form_messages.html' with form=form %}
+
+					<div class="mb-3">
+						{% include 'components/field.html' with label='CPF:' field=form.cpf required=True %}
+					</div>
+					<div class="mb-3">
+						{% include 'components/field.html' with label='Senha:' field=form.password required=True %}
+						
+						<small>
+							<a href="pages-reset-password.html">Esqueci minha senha</a>
+						</small>
+					</div>
+					<div>
+						<label class="form-check">
+							<input class="form-check-input" type="checkbox" value="remember-me"
+								name="remember-me" checked>
+							<span class="form-check-label">
+								Lembrar minhas credenciais
+							</span>
+						</label>
+					</div>
+					<div class="text-center mt-3">
+						<button type="submit" class="btn btn-lg btn-primary">Entrar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
